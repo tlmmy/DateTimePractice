@@ -3,18 +3,21 @@ package old.api;
 
 import java.util.Date;
 import javax.swing.JOptionPane;
+import utility.DateUtilities;
 
 /**
  *
  * @author Instlogin
  */
 public class SimpleDateWindow extends javax.swing.JFrame {
-
+    private DateUtilities dateUtil;
+    
     /**
      * Creates new form SimpleDateWindow
      */
     public SimpleDateWindow() {
         initComponents();
+        dateUtil = DateUtilities.getInstance();
     }
 
     /**
@@ -81,7 +84,7 @@ public class SimpleDateWindow extends javax.swing.JFrame {
         // Create an order object and set its orderDate property:
         Order order = new Order();
         String dateValue = jTextField1.getText();
-        Date orderDate = DateUtilities.toDate(dateValue);
+        Date orderDate = dateUtil.toDate(dateValue);
         try {
             order.setOrderDate(orderDate);
             jLabel2.setText(jLabel2.getText() + order.getOrderDate().toString());
